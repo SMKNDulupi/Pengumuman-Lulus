@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pengumuman Kelulusan SMK Negeri 1 Dulupi 2024/2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #1f2937;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      background-color: #e5e7eb;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .success {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pengumuman Kelulusan<br>SMK Negeri 1 Dulupi<br>Tahun Ajaran 2024/2025</h1>
+
+  <input type="text" id="nisnInput" placeholder="Masukkan NISN Anda">
+  <button onclick="cekKelulusan()">Cek Kelulusan</button>
+
+  <div class="result" id="hasil"></div>
+
+  <script>
+    const dataSiswa = {
+      "0069984106": { nama: "ADELIA MAKUTA", status: "LULUS", kelas: "XII" },
+      "0067470482": { nama: "AGUSTIAN YENTEO", status: "LULUS", kelas: "XII" },
+      "0066163755": { nama: "FERAWATI YUSUP", status: "LULUS", kelas: "XII" },
+      "0071906838": { nama: "HARUN SUPU", status: "LULUS", kelas: "XII" },
+      "0079577458": { nama: "IBRAHIM HARJAN", status: "LULUS", kelas: "XII" },
+      "0074182683": { nama: "ISMAIL HASAN", status: "LULUS", kelas: "XII" },
+      "0052403070": { nama: "ISMAIL R. MANTAKI", status: "LULUS", kelas: "XII" },
+      "0056842619": { nama: "ISNA DALAWATI", status: "LULUS", kelas: "XII" },
+      "0067999092": { nama: "LISPAN LAIYA", status: "LULUS", kelas: "XII" },
+      "0053668534": { nama: "NURFIKA D TAHIR", status: "LULUS", kelas: "XII" },
+      "0052090602": { nama: "PARMAN RAJANUN", status: "LULUS", kelas: "XII" },
+      "0068469689": { nama: "SUSANDRI TATUDI", status: "LULUS", kelas: "XII" },
+      "0072973138": { nama: "TETIN L. SINTO", status: "LULUS", kelas: "XII" },
+      "0079510638": { nama: "YULINDA TABA", status: "LULUS", kelas: "XII" },
+      "0088825392": { nama: "JELITA DAUD", status: "LULUS", kelas: "XII" }
+    };
+
+    function cekKelulusan() {
+      const nisn = document.getElementById("nisnInput").value.trim();
+      const hasil = document.getElementById("hasil");
+
+      if (dataSiswa[nisn]) {
+        const siswa = dataSiswa[nisn];
+        hasil.innerHTML = `
+          <strong>NISN:</strong> ${nisn}<br>
+          <strong>Nama:</strong> ${siswa.nama}<br>
+          <strong>Kelas:</strong> ${siswa.kelas}<br>
+          <strong>Status:</strong> <span class="success">${siswa.status}</span>
+        `;
+      } else {
+        hasil.innerHTML = `<span class="error">NISN tidak ditemukan. Silakan periksa kembali.</span>`;
+      }
+    }
+  </script>
+
+</body>
+</html>
